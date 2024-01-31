@@ -15,8 +15,8 @@
 }
 
 .product-single .product-single-content {
-  row-gap: 2rem;
-  padding: 12px;
+  row-gap: 2px;
+  padding: 10px;
 }
 
 @media screen and (min-width: 768px) {

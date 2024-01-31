@@ -17,7 +17,7 @@ function UserProfile() {
           <Link className="item" to="/account/userAdress">
             دفتر العناويين
           </Link>
-          <Link className="item" to="/account/favourite">
+          <Link className="item" to="/account/favorite">
             قائمة رغباتي
           </Link>
           <Link className="item">طلباتي</Link>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Carousel, Col, Container, Row } from "react-bootstrap";
+import {  Col, Container, Row } from "react-bootstrap";
 import "./product.css";
 import "./singleProduct.css";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -17,14 +17,10 @@ import { FaShare } from "react-icons/fa";
 import { FaCommentDots } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Comments from "./comments/Comments";
-import { addToFav, deletFromFav } from "../store/favourite-slice";
-import { addToCart, setCartMessageOn } from "../store/cartSlice";
+import { addToFav, deletFromFav } from "../store/favorite-slice";
+import { addToCart } from "../store/cartSlice";
 
-function Products({
-  product,
-  setVideoRef,
-  autoplay,
-}) {
+function Products({ product, setVideoRef, autoplay }) {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [option, setOption] = useState(false);
@@ -53,14 +49,20 @@ function Products({
     });
   };
   const addToCartHandler = (product) => {
-    let discountedPrice =
-      product.price - product.price * (product.discountPercentage / 100);
-    let totalPrice = quantity * discountedPrice;
+    // - product.price * (product.discountPercentage / 100);
+    let discountedPrice = product.price;
+    let totalPrice = quantity * product.price;
+    let productColor = product.images[changeBackground];
 
     dispatch(
-      addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice })
+      addToCart({
+        ...product,
+        quantity: quantity,
+        totalPrice,
+        discountedPrice,
+        productColor,
+      })
     );
-    dispatch(setCartMessageOn(true));
   };
   function desToggel() {
     setDes((des) => !des);
@@ -123,6 +125,8 @@ function Products({
       <Row className="">
         <Col xxl className="co">
           <div className="card-content">
+            {" "}
+            {/*video*/}
             <img src={product.images[1]} alt="" />
           </div>
           <div className="sidebar">
@@ -190,7 +194,7 @@ function Products({
             </div>
             <main className="">
               <div className="product-single">
-                <div className="container">
+                <div className="container p-0">
                   <div className="product-single-content bg-white d-grid">
                     <div className="product-single-l">
                       <div className="product-img">
@@ -267,6 +271,7 @@ function Products({
               onClick={() => {
                 setAddcart((addcart) => !addcart);
                 handleCart();
+                setOption((option) => !option);
                 addToCartHandler(product);
               }}
             >

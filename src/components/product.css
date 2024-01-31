@@ -97,8 +97,8 @@ body::-webkit-scrollbar {
 .option {
   position: absolute;
   top: 1%;
-  left: 13%;
-  width: 85%;
+  left: 2px;
+  width: 98%;
   height: 71%;
   overflow: auto;
   background-color: rgba(20, 20, 20, 0.7);

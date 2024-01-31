@@ -43,7 +43,7 @@ function Header() {
                   <div key={index} className="link">
                     <Link
                       to={`/product/${product.id}`}
-                      className="text-decoration-none"
+                      className="text-decoration-none mb-2"
                     >
                       {product.title}
                     </Link>

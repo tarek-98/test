@@ -56,6 +56,18 @@
   outline: 1px solid var(--color-light-orange);
 }
 
+.cart .total {
+  border: 1px solid var(--color-light-orange);
+  padding: 10px;
+  margin-left: 0.5rem;
+  width: fit-content;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
 .cart-ctable {
   min-width: 320px;
 }
@@ -77,10 +89,15 @@
   margin-bottom: 10px;
 }
 
+.cart-ctr .cart-cth img {
+  width: 120px;
+  height: 100px;
+}
+
 .cart-chead {
-  margin-bottom: 2rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  margin-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
   box-shadow: rgba(60, 64, 67, 0.01) 0px 1px 2px 0px, rgba(60, 64, 67, 0.01) 0px 1px 3px 1px;
   border-radius: 3px;
   color: rgba(0, 0, 0, 0.6);

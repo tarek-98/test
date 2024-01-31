@@ -9,7 +9,7 @@ function UserAdress() {
   const users = useSelector((state) => state.users);
 
   useEffect(() => {
-    dispatch(fetchUsers(5));
+    dispatch(fetchUsers(id));
   }, []);
 
   return (
@@ -20,8 +20,7 @@ function UserAdress() {
           <hr />
         </div>
         <div className="">
-          <p>City: {users.address.city}</p>
-          <p>street: {users.address.street}</p>
+          <p>username: {users.username}</p>
         </div>
       </div>
     </div>

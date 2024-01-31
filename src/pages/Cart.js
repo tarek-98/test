@@ -2,20 +2,22 @@ import React, { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { shopping_cart } from "../utils/images";
 import { Link } from "react-router-dom";
-import { formatPrice } from "../utils/helpers";
 import {
   getAllCarts,
   removeFromCart,
   toggleCartQty,
   clearCart,
-  getCartTotal,
 } from "../store/cartSlice";
 import "../components/cart.css";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const carts = useSelector(getAllCarts);
-  const { itemsCount, totalAmount } = useSelector((state) => state.cart);
+
+  const CArtTotlaPrice = carts.reduce((acc, product) => {
+    acc += product.price * product.quantity;
+    return acc;
+  }, 0);
 
   if (carts.length === 0) {
     return (
@@ -42,6 +44,7 @@ const CartPage = () => {
     <div className="home">
       <div className="cart pb-5">
         <div className="container">
+          <h3 className="total">Total Price: {CArtTotlaPrice.toFixed(2)} SAR</h3>
           <div className="cart-ctable">
             <div className="cart-chead">
               {carts.map((cart, idx) => {
@@ -53,9 +56,17 @@ const CartPage = () => {
                         <span className="cart-ctxt">{cart.title}</span>
                       </div>
                       <div className="cart-cth">
+                        <span className="cart-ctxt">Product Color</span>
+                        <img
+                          className="cart-ctxt"
+                          src={cart.productColor}
+                          alt=""
+                        />
+                      </div>
+                      <div className="cart-cth">
                         <span className="cart-ctxt">Unit Price</span>
                         <span className="cart-ctxt">
-                          {formatPrice(cart.discountedPrice)}
+                          {cart.price} SAR
                         </span>
                       </div>
                       <div className="cart-cth">
@@ -95,7 +106,7 @@ const CartPage = () => {
                       <div className="cart-cth">
                         <span className="cart-ctxt">Total Price</span>
                         <span className="cart-ctxt text-orange">
-                          {formatPrice(cart.totalPrice)}
+                          {cart.totalPrice} SAR
                         </span>
                       </div>
                       <div className="cart-cth">
@@ -126,10 +137,7 @@ const CartPage = () => {
                   <i className="fas fa-trash"></i>
                   <span className="mx-1">Clear Cart</span>
                 </button>
-                <button
-                  type="button"
-                  className="checkout-bt"
-                >
+                <button type="button" className="checkout-bt">
                   Check Out
                 </button>
               </div>
