@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {  Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import "./product.css";
 import "./singleProduct.css";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -53,6 +53,7 @@ function Products({ product, setVideoRef, autoplay }) {
     let discountedPrice = product.price;
     let totalPrice = quantity * product.price;
     let productColor = product.images[changeBackground];
+    let productWeight = product.stock; //edit
 
     dispatch(
       addToCart({
@@ -61,6 +62,7 @@ function Products({ product, setVideoRef, autoplay }) {
         totalPrice,
         discountedPrice,
         productColor,
+        productWeight,
       })
     );
   };

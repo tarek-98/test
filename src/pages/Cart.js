@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { shopping_cart } from "../utils/images";
 import { Link } from "react-router-dom";
@@ -7,8 +7,10 @@ import {
   removeFromCart,
   toggleCartQty,
   clearCart,
+  addToCart,
 } from "../store/cartSlice";
 import "../components/cart.css";
+import { Table } from "react-bootstrap";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +20,15 @@ const CartPage = () => {
     acc += product.price * product.quantity;
     return acc;
   }, 0);
+  const CartWeight = carts.reduce((acc, product) => {
+    acc += product.productWeight * product.quantity;
+    return acc;
+  }, 0);
+
+  const VAT = CArtTotlaPrice * (15 / 100);
+  const Services = CArtTotlaPrice * (5 / 100);
+  const Total = CArtTotlaPrice + VAT + Services;
+  const Weight = CartWeight; //dynamic
 
   if (carts.length === 0) {
     return (
@@ -41,10 +52,9 @@ const CartPage = () => {
   }
 
   return (
-    <div className="home">
-      <div className="cart pb-5">
+    <div className="home pb-5">
+      <div className="cart pb-5" dir="rtl">
         <div className="container">
-          <h3 className="total">Total Price: {CArtTotlaPrice.toFixed(2)} SAR</h3>
           <div className="cart-ctable">
             <div className="cart-chead">
               {carts.map((cart, idx) => {
@@ -52,11 +62,11 @@ const CartPage = () => {
                   <Fragment>
                     <div className="cart-ctr fw-6">
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Product</span>
+                        <span className="cart-ctxt">اسم المنتج</span>
                         <span className="cart-ctxt">{cart.title}</span>
                       </div>
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Product Color</span>
+                        <span className="cart-ctxt">اللون</span>
                         <img
                           className="cart-ctxt"
                           src={cart.productColor}
@@ -64,13 +74,11 @@ const CartPage = () => {
                         />
                       </div>
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Unit Price</span>
-                        <span className="cart-ctxt">
-                          {cart.price} SAR
-                        </span>
+                        <span className="cart-ctxt">سعر الوحدة</span>
+                        <span className="cart-ctxt">{cart.price} ر.س</span>
                       </div>
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Quantity</span>
+                        <span className="cart-ctxt">الكمية</span>
                         <div className="cart-ctd">
                           <div className="qty-change d-flex text-center">
                             <button
@@ -104,20 +112,26 @@ const CartPage = () => {
                         </div>
                       </div>
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Total Price</span>
+                        <span className="cart-ctxt">السعر الاجمالي</span>
                         <span className="cart-ctxt text-orange">
-                          {cart.totalPrice} SAR
+                          {cart.totalPrice} ر.س
                         </span>
                       </div>
                       <div className="cart-cth">
-                        <span className="cart-ctxt">Actions</span>
+                        <span className="cart-ctxt">الوزن</span>
+                        <span className="cart-ctxt text-orange">
+                          {cart.productWeight * cart.quantity} كجم
+                        </span>
+                      </div>
+                      <div className="cart-cth">
+                        <span className="cart-ctxt">حذف</span>
                         <div className="cart-ctd">
                           <button
                             type="button"
                             className="delete-btn"
                             onClick={() => dispatch(removeFromCart(cart.id))}
                           >
-                            Delete
+                            حذف المنتج
                           </button>
                         </div>
                       </div>
@@ -126,7 +140,32 @@ const CartPage = () => {
                 );
               })}
             </div>
-
+            <div className="col p-2">
+              <Table striped bordered hover responsive>
+                <tbody>
+                  <tr>
+                    <td>السعر الاجمالي</td>
+                    <td>{CArtTotlaPrice.toFixed(2)} ر.س</td>
+                  </tr>
+                  <tr>
+                    <td>ضريبة القيمة المضافة ( 15% )</td>
+                    <td>{VAT.toFixed(2)} ر.س</td>
+                  </tr>
+                  <tr>
+                    <td>رسوم خدمات جملة و بس شامل الضريبة</td>
+                    <td>{Services.toFixed(2)} ر.س</td>
+                  </tr>
+                  <tr>
+                    <td>الاجمالي النهائي</td>
+                    <td>{Total.toFixed(2)} ر.س</td>
+                  </tr>
+                  <tr>
+                    <td>الوزن الكلي</td>
+                    <td>{Weight} كجم</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
             <div className="cart-cfoot d-flex">
               <div className="cart-cfoot-l mb-3 d-flex justify-content-between">
                 <button
@@ -134,12 +173,15 @@ const CartPage = () => {
                   className="clear-cart-btn text-uppercase me-3"
                   onClick={() => dispatch(clearCart())}
                 >
-                  <i className="fas fa-trash"></i>
-                  <span className="mx-1">Clear Cart</span>
+                  <span className="mx-1">حذف العربة</span>
                 </button>
-                <button type="button" className="checkout-bt">
-                  Check Out
-                </button>
+                <Link
+                  to="/account/checkout"
+                  type="button"
+                  className="checkout-bt me-2"
+                >
+                  أكمل لخيارات الشحن
+                </Link>
               </div>
             </div>
           </div>

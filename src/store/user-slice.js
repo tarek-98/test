@@ -1,15 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
-export const fetchUsers = createAsyncThunk("userSlice/fetchUser", async (id) => {
-  const res = await fetch(`https://fakestoreapi.com/users/${id}`);
-  const data = await res.json();
-  return data;
-});
+export const fetchUsers = createAsyncThunk(
+  "userSlice/fetchUser",
+  async (id) => {
+    const res = await fetch(`https://fakestoreapi.com/users/${id}`);
+    const data = await res.json();
+    return data;
+  }
+);
+const initialState = {
+  userSingle: [],
+};
 
 export const userSlice = createSlice({
-  initialState: [],
   name: "userSlice",
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
@@ -19,5 +24,4 @@ export const userSlice = createSlice({
 });
 
 export const {} = userSlice.actions;
-export const getUserSingle = (state) => state.userSingle;
 export default userSlice.reducer;

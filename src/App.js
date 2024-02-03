@@ -15,6 +15,7 @@ import UserProfile from "./pages/UserProfile";
 import ResetPassword from "./pages/ResetPassword";
 import UserAdress from "./pages/UserAdress";
 import ProfileInfo from "./pages/ProfileInfo";
+import CheckOut from "./pages/CheckOut";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/account/info" element={<ProfileInfo />} />
             <Route path="/account/resetPassword" element={<ResetPassword />} />
             <Route path="/account/userAdress" element={<UserAdress />} />
+            <Route path="/account/checkout" element={<CheckOut />} />
           </Route>
         </Routes>
       </BrowserRouter>

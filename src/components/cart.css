@@ -160,7 +160,7 @@
 
 .clear-cart-btn {
   border: 1px solid var(--color-danger);
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 0.7rem;
   transition: var(--transition-ease);
   -webkit-transition: var(--transition-ease);
   -moz-transition: var(--transition-ease);
@@ -174,7 +174,18 @@
 }
 
 
-.checkout-btn {
-  padding: 0.8rem 2.8rem;
-  margin-top: 0.7rem;
+.checkout-bt {
+  text-transform: uppercase;
+  padding: 0.7rem 0.7rem;
+  border: 1px solid #4b76b8;
+  transition: var(--transition-ease);
+  -webkit-transition: var(--transition-ease);
+  -moz-transition: var(--transition-ease);
+  -ms-transition: var(--transition-ease);
+  -o-transition: var(--transition-ease);
+}
+
+.checkout-bt:hover {
+  background-color: #4b76b8;
+  color: white;
 }
