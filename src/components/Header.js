@@ -28,8 +28,9 @@ function Header() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              style={{ textTransform: "lowercase" }}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success">بحث</Button>
           </Form>
           {search.toLowerCase() && (
             <div className={searchMenu ? "search-menu" : "hide-searchMenu"}>

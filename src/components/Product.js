@@ -134,7 +134,7 @@ function Products({ product, setVideoRef, autoplay }) {
           <div className="sidebar">
             <div className="price">
               <p className="m-0 text-white">{product.price}</p>
-              <span className="text-white">SAR</span>
+              <span className="text-white">ر.س</span>
             </div>
             <div
               className="item"
@@ -164,7 +164,9 @@ function Products({ product, setVideoRef, autoplay }) {
               }}
             >
               <FaCartPlus />
-              <span>Add</span>
+              <span className="addCart">
+                اضف <br /> للعربة
+              </span>
             </div>
             <div
               className="item"
@@ -222,19 +224,19 @@ function Products({ product, setVideoRef, autoplay }) {
                       </div>
                     </div>
 
-                    <div className="product-single-r">
+                    <div className="product-single-r" dir="rtl">
                       <div className="product-details font-manrope">
                         <div className="title">{product.title}</div>
                         <div className="price">
                           <div className="d-flex align-center">
                             <div className="old-price">
-                              Price: {product.price * quantity} SAR
+                              السعر: {product.price * quantity} ر.س
                             </div>
                           </div>
                         </div>
 
                         <div className="qty flex align-center m-1">
-                          <div className="qty-text mb-2">Quantity:</div>
+                          <div className="qty-text mb-2">الكمية:</div>
                           <div className="qty-change d-flex">
                             <button
                               type="button"
@@ -277,7 +279,7 @@ function Products({ product, setVideoRef, autoplay }) {
                 addToCartHandler(product);
               }}
             >
-              Add to Cart
+              اضف للعربة
             </div>
           </div>
           <div className={addcart ? "added-cart" : "hide-cart"}>
@@ -296,10 +298,10 @@ function Products({ product, setVideoRef, autoplay }) {
           <div className="description">
             <div className="description-btn">
               <p className="" onClick={() => desToggel()}>
-                Description
+                التفاصيل
               </p>
               <p className="" onClick={() => desToggel2()}>
-                Photos
+                الصور
               </p>
             </div>
           </div>

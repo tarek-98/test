@@ -141,3 +141,7 @@
   -ms-transition: var(--transition-ease);
   -o-transition: var(--transition-ease);
 }
+
+.addCart {
+  font-size: 12px;
+}
