@@ -55,7 +55,7 @@ function Home() {
     <div className="home">
       {products.map((product, index) => {
         return (
-          <Product product={product} setVideoRef={handleVideoRef(index)} />
+          <Product product={product} setVideoRef={handleVideoRef(index)} autoplay/>
         );
       })}
     </div>
