@@ -124,244 +124,237 @@ function Products({ product, setVideoRef, autoplay }) {
   };
   return (
     <Container className="content">
-      <Row className="">
-        <Col xxl className="co">
-          <div className="card-content">
-            {" "}
-            {/*video*/}
-            <video
-              onClick={onVideoPress}
-              ref={(ref) => {
-                videoRef.current = ref;
-                setVideoRef(ref);
-              }}
-              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              loop
-              muted={true}
-              controls
-              autoPlay
-              preload="auto"
-              playsinline
-            ></video>
-            {/*  <img src={product.images[1]} alt="" />*/}
+      <div className="co">
+        <div className="card-content">
+          <video
+            onClick={onVideoPress}
+            ref={(ref) => {
+              videoRef.current = ref;
+              setVideoRef(ref);
+            }}
+            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            loop
+            muted={true}
+            controls
+            autoPlay
+            preload="auto"
+            playsinline
+          ></video>
+          {/*  <img src={product.images[1]} alt="" />*/}
+        </div>
+        <div className="sidebar">
+          <div className="price">
+            <p className="m-0 text-white">{product.price}</p>
+            <span className="text-white">ر.س</span>
           </div>
-          <div className="sidebar">
-            <div className="price">
-              <p className="m-0 text-white">{product.price}</p>
-              <span className="text-white">ر.س</span>
-            </div>
-            <div
-              className="item"
-              onClick={() => {
-                liked
-                  ? dispatch(deletFromFav(product))
-                  : dispatch(addToFav(product));
+          <div
+            className="item"
+            onClick={() => {
+              liked
+                ? dispatch(deletFromFav(product))
+                : dispatch(addToFav(product));
+            }}
+          >
+            <FaHeart
+              style={{
+                color: liked ? "#FF0000" : "white",
               }}
-            >
-              <FaHeart
-                style={{
-                  color: liked ? "#FF0000" : "white",
-                }}
-                onClick={handleLikeClick}
-              />
-              <span>
-                {formatLikesCount(
-                  parseLikesCount(product.price) + (liked ? 1 : 0)
-                )}
-              </span>
-            </div>
-            <div
-              className="item"
-              onClick={() => {
-                setOption((option) => !option);
-                setSocial(false);
-              }}
-            >
-              <FaCartPlus />
-              <span className="addCart">
-                اضف <br /> للعربة
-              </span>
-            </div>
-            <div
-              className="item"
-              onClick={() => {
-                setComment((comment) => !comment);
-                setOption(false);
-                setSocial(false);
-              }}
-            >
-              <FaCommentDots />
-              <span>80</span>
-            </div>
-            <div
-              className="item"
-              onClick={() => {
-                setSocial((social) => !social);
-                setOption(false);
-              }}
-            >
-              <FaShare />
-            </div>
+              onClick={handleLikeClick}
+            />
+            <span>
+              {formatLikesCount(
+                parseLikesCount(product.price) + (liked ? 1 : 0)
+              )}
+            </span>
           </div>
-          <div className={option ? "option" : "hide-option"}>
-            <div
-              className="close"
-              onClick={() => setOption((option) => !option)}
-            >
-              <IoIosCloseCircleOutline />
-            </div>
-            <main className="">
-              <div className="product-single">
-                <div className="container p-0">
-                  <div className="product-single-content bg-white d-grid">
-                    <div className="product-single-l">
-                      <div className="product-img">
-                        <div className="product-img-zoom">
-                          <img
-                            src={product.images[changeBackground]}
-                            alt=""
-                            className="img-cover h-100"
-                          />
-                        </div>
-                        <div className="product-img-thumbs d-flex align-center">
-                          {product.images.map((image, index) => {
-                            return (
-                              <div
-                                className="thumb-item"
-                                onClick={() => setChangeBackground(index)}
-                              >
-                                <img src={image} alt="" className="img-cover" />
-                              </div>
-                            );
-                          })}
-                        </div>
+          <div
+            className="item"
+            onClick={() => {
+              setOption((option) => !option);
+              setSocial(false);
+            }}
+          >
+            <FaCartPlus />
+            <span className="addCart">
+              اضف <br /> للعربة
+            </span>
+          </div>
+          <div
+            className="item"
+            onClick={() => {
+              setComment((comment) => !comment);
+              setOption(false);
+              setSocial(false);
+            }}
+          >
+            <FaCommentDots />
+            <span>80</span>
+          </div>
+          <div
+            className="item"
+            onClick={() => {
+              setSocial((social) => !social);
+              setOption(false);
+            }}
+          >
+            <FaShare />
+          </div>
+        </div>
+        <div className={option ? "option" : "hide-option"}>
+          <div className="close" onClick={() => setOption((option) => !option)}>
+            <IoIosCloseCircleOutline />
+          </div>
+          <main className="">
+            <div className="product-single">
+              <div className="container p-0">
+                <div className="product-single-content bg-white d-grid">
+                  <div className="product-single-l">
+                    <div className="product-img">
+                      <div className="product-img-zoom">
+                        <img
+                          src={product.images[changeBackground]}
+                          alt=""
+                          className="img-cover h-100"
+                        />
+                      </div>
+                      <div className="product-img-thumbs d-flex align-center">
+                        {product.images.map((image, index) => {
+                          return (
+                            <div
+                              className="thumb-item"
+                              onClick={() => setChangeBackground(index)}
+                            >
+                              <img src={image} alt="" className="img-cover" />
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
+                  </div>
 
-                    <div className="product-single-r" dir="rtl">
-                      <div className="product-details font-manrope">
-                        <div className="title">{product.title}</div>
-                        <div className="price">
-                          <div className="d-flex align-center">
-                            <div className="old-price">
-                              السعر: {product.price * quantity} ر.س
-                            </div>
+                  <div className="product-single-r" dir="rtl">
+                    <div className="product-details font-manrope">
+                      <div className="title">{product.title}</div>
+                      <div className="price">
+                        <div className="d-flex align-center">
+                          <div className="old-price">
+                            السعر: {product.price * quantity} ر.س
                           </div>
                         </div>
+                      </div>
 
-                        <div className="qty flex align-center m-1">
-                          <div className="qty-text mb-2">الكمية:</div>
-                          <div className="qty-change d-flex">
-                            <button
-                              type="button"
-                              className="qty-decrease d-flex justify-content-center"
-                              onClick={() => decreaseQty()}
-                            >
-                              -
-                            </button>
-                            <div className="qty-value d-flex justify-content-center">
-                              {quantity}
-                            </div>
-                            <button
-                              type="button"
-                              className="qty-increase d-flex justify-content-center"
-                              onClick={() => increaseQty()}
-                            >
-                              +
-                            </button>
+                      <div className="qty flex align-center m-1">
+                        <div className="qty-text mb-2">الكمية:</div>
+                        <div className="qty-change d-flex">
+                          <button
+                            type="button"
+                            className="qty-decrease d-flex justify-content-center"
+                            onClick={() => decreaseQty()}
+                          >
+                            -
+                          </button>
+                          <div className="qty-value d-flex justify-content-center">
+                            {quantity}
                           </div>
-                          {product.stock === 0 ? (
-                            <div className="qty-error text-uppercase bg-danger text-white">
-                              out of stock
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                          <button
+                            type="button"
+                            className="qty-increase d-flex justify-content-center"
+                            onClick={() => increaseQty()}
+                          >
+                            +
+                          </button>
                         </div>
+                        {product.stock === 0 ? (
+                          <div className="qty-error text-uppercase bg-danger text-white">
+                            out of stock
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </main>
-            <div
-              className="send-cart text-center mt-4 text-white"
-              onClick={() => {
-                setAddcart((addcart) => !addcart);
-                handleCart();
-                setOption((option) => !option);
-                addToCartHandler(product);
-              }}
-            >
-              اضف للعربة
+            </div>
+          </main>
+          <div
+            className="send-cart text-center mt-4 text-white"
+            onClick={() => {
+              setAddcart((addcart) => !addcart);
+              handleCart();
+              setOption((option) => !option);
+              addToCartHandler(product);
+            }}
+          >
+            اضف للعربة
+          </div>
+        </div>
+        <div className={addcart ? "added-cart" : "hide-cart"}>
+          <FaCheck />
+          <p className="mb-0 ms-2">Added Sucssesfully</p>
+        </div>
+        <div className={social ? "social" : "hidden"}>
+          <div className="links">
+            <FaFacebook />
+            <FaTiktok />
+            <FaSnapchat />
+            <FaInstagram />
+            <FaTwitterSquare />
+          </div>
+        </div>
+        <div className="description">
+          <div className="description-btn">
+            <p className="" onClick={() => desToggel()}>
+              التفاصيل
+            </p>
+            <p className="" onClick={() => desToggel2()}>
+              الصور
+            </p>
+          </div>
+        </div>
+        <div className={des ? "des-info" : "hide"}>
+          <div className="close" onClick={() => setDes((des) => !des)}>
+            <IoIosCloseCircleOutline />
+          </div>
+          <h3 className="text-center">{product.title}</h3>
+          <p>{product.description}</p>
+        </div>
+        <div className={img ? "product-image" : "hide"}>
+          <div className="close" onClick={() => setImg((img) => !img)}>
+            <IoIosCloseCircleOutline />
+          </div>
+          <div className="product-info p-2">
+            <div className="image">
+              <img src={product.images[changeBackground]} alt="" />
             </div>
           </div>
-          <div className={addcart ? "added-cart" : "hide-cart"}>
-            <FaCheck />
-            <p className="mb-0 ms-2">Added Sucssesfully</p>
+          <div className="product-slider-img">
+            {product.images.map((image, index) => {
+              return (
+                <div onClick={() => setChangeBackground(index)}>
+                  <img src={image} alt="" />
+                </div>
+              );
+            })}
           </div>
-          <div className={social ? "social" : "hidden"}>
-            <div className="links">
-              <FaFacebook />
-              <FaTiktok />
-              <FaSnapchat />
-              <FaInstagram />
-              <FaTwitterSquare />
-            </div>
+        </div>
+        <div className={comment ? "com" : "hide-comment"}>
+          <div
+            className="close"
+            onClick={() => setComment((comment) => !comment)}
+          >
+            <IoIosCloseCircleOutline />
           </div>
-          <div className="description">
-            <div className="description-btn">
-              <p className="" onClick={() => desToggel()}>
-                التفاصيل
-              </p>
-              <p className="" onClick={() => desToggel2()}>
-                الصور
-              </p>
-            </div>
+          <div className="comm">
+            <Comments
+              product={product}
+              commentsUrl="http://localhost:3004/comments"
+              currentUserId="1"
+            />
           </div>
-          <div className={des ? "des-info" : "hide"}>
-            <div className="close" onClick={() => setDes((des) => !des)}>
-              <IoIosCloseCircleOutline />
-            </div>
-            <h3 className="text-center">{product.title}</h3>
-            <p>{product.description}</p>
-          </div>
-          <div className={img ? "product-image" : "hide"}>
-            <div className="close" onClick={() => setImg((img) => !img)}>
-              <IoIosCloseCircleOutline />
-            </div>
-            <div className="product-info p-2">
-              <div className="image">
-                <img src={product.images[changeBackground]} alt="" />
-              </div>
-            </div>
-            <div className="product-slider-img">
-              {product.images.map((image, index) => {
-                return (
-                  <div onClick={() => setChangeBackground(index)}>
-                    <img src={image} alt="" />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className={comment ? "com" : "hide-comment"}>
-            <div
-              className="close"
-              onClick={() => setComment((comment) => !comment)}
-            >
-              <IoIosCloseCircleOutline />
-            </div>
-            <div className="comm">
-              <Comments
-                product={product}
-                commentsUrl="http://localhost:3004/comments"
-                currentUserId="1"
-              />
-            </div>
-          </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </Container>
   );
 }
