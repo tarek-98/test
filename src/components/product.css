@@ -37,9 +37,10 @@ body::-webkit-scrollbar {
 }
 
 .co {
+  margin-top: 15%;
   position: relative;
   width: 100%;
-  height: calc(100vh - 56px);
+  height: 91vh;
   scroll-snap-align: end;
   padding: 0 !important;
 }

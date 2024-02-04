@@ -123,7 +123,7 @@ function Products({ product, setVideoRef, autoplay }) {
     }
   };
   return (
-    <Container className="content">
+    <div className="content">
       <div className="co">
         <div className="card-content">
           <video
@@ -355,7 +355,7 @@ function Products({ product, setVideoRef, autoplay }) {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 export default Products;
