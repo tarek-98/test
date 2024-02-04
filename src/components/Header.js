@@ -13,7 +13,7 @@ function Header() {
   const [searchMenu, setSearchMenu] = useState(false);
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary ss nav-head" fixed="top">
+    <Navbar expand="lg" className="bg-body-tertiary ss nav-head" sticky="top">
       <Container>
         <Navbar.Brand href="#">Gomla Wbas</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

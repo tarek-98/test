@@ -122,25 +122,26 @@ function Products({ product, setVideoRef, autoplay }) {
       videoRef.current.pause();
     }
   };
-
   return (
     <div className="content">
       <div className="co">
-        <video
-          className="player"
-          onClick={onVideoPress}
-          ref={(ref) => {
-            videoRef.current = ref;
-            setVideoRef(ref);
-          }}
-          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-          loop
-          muted={true}
-          controls
-          autoPlay
-          preload="auto"
-          playsinline
-        ></video>
+        <div className="card-content">
+          <video
+            onClick={onVideoPress}
+            ref={(ref) => {
+              videoRef.current = ref;
+              setVideoRef(ref);
+            }}
+            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            loop
+            muted={true}
+            controls
+            autoPlay
+            preload="auto"
+            playsinline
+          ></video>
+          {/*  <img src={product.images[1]} alt="" />*/}
+        </div>
         <div className="sidebar">
           <div className="price">
             <p className="m-0 text-white">{product.price}</p>

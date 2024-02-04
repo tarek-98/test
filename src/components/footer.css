@@ -1,16 +1,14 @@
 .nav-buttom {
   background-color: black !important;
+  left: -14px;
 }
-@media (max-width:1500px) {
-  .nav-buttom {
-    left: -14px;
-  }
-}
+
 @media (max-width:768px) {
   .nav-buttom {
     left: -8px;
   }
 }
+
 @media (max-width:425px) {
   .nav-buttom {
     left: -4px;
