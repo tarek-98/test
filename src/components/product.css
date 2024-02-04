@@ -18,6 +18,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.content {
+  margin-top: 15%;
+}
+
 .card-content {
   width: 100%;
   height: calc(100% - 51px);
