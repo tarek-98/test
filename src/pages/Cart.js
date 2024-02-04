@@ -11,6 +11,7 @@ import {
 } from "../store/cartSlice";
 import "../components/cart.css";
 import { Table } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,27 @@ const CartPage = () => {
     return acc;
   }, 0);
 
+  function sweetAlertDel() {
+    Swal.fire({
+      title: "هل انت متأكد؟",
+      text: "هل تريد حذف كل المنتجات",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "نعم حذف الكل",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "حذفت",
+          text: "تم حذف المنتجات",
+          icon: "success",
+        });
+        dispatch(clearCart());
+      }
+    });
+  }
+
   const VAT = CArtTotlaPrice * (15 / 100);
   const Services = CArtTotlaPrice * (5 / 100);
   const Total = CArtTotlaPrice + VAT + Services;
@@ -37,13 +59,13 @@ const CartPage = () => {
           <div className="empty-cart d-flex justify-content-center flex-column align-content-center text-center">
             <img src={shopping_cart} alt="" />
             <span className="fw-6 fs-15 text-gray">
-              Your shopping cart is empty.
+              .سلة التسوق الخاصة بك فارغة
             </span>
             <Link
               to="/"
               className="shopping-btn fw-5 text-decoration-none text-center text-dark"
             >
-              Go shopping Now
+              اذهب للتسوق الان
             </Link>
           </div>
         </div>
@@ -171,16 +193,18 @@ const CartPage = () => {
                 <button
                   type="button"
                   className="clear-cart-btn text-uppercase me-3"
-                  onClick={() => dispatch(clearCart())}
+                  onClick={() => {
+                    sweetAlertDel();
+                  }}
                 >
                   <span className="mx-1">حذف العربة</span>
                 </button>
                 <Link
                   to="/account/checkout"
                   type="button"
-                  className="checkout-bt me-2"
+                  className="checkout-bt me-2 fw-bolder"
                 >
-                  أكمل لخيارات الشحن
+                  اكمل لخيارات الشحن
                 </Link>
               </div>
             </div>

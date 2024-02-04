@@ -2,7 +2,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchAsyncCategories, getAllCategories } from "../store/categorySlice";
-import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import {
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+} from "react-icons/md";
 import "../components/categories.css";
 
 function Categories() {
@@ -41,7 +44,7 @@ function Categories() {
                     return (
                       <Fragment>
                         <Link to={`${category}`}>
-                          <MdKeyboardDoubleArrowRight />
+                          <MdKeyboardDoubleArrowRight className="me-2" />
                           {category}
                         </Link>
                       </Fragment>
