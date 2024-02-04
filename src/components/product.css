@@ -56,6 +56,18 @@ body::-webkit-scrollbar {
   height: 91%;
 }
 
+@media (max-width:375px) {
+  .co .player {
+    height: 100%;
+  }
+}
+
+@media (max-width:320px) {
+  .co .player {
+    height: 100%;
+  }
+}
+
 .co .sidebar {
   position: absolute;
   display: flex;
