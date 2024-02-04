@@ -6,12 +6,12 @@ import Product from "../components/Product";
 function Home() {
   const products = useSelector(getAllProducts);
   const dispatch = useDispatch();
+  const videoRefs = useRef([]);
 
   useEffect(() => {
     dispatch(fetchAsyncProducts());
   }, []);
 
-  const videoRefs = useRef([]);
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -47,6 +47,8 @@ function Home() {
       observer.disconnect();
     };
   }, [products]);
+
+  // This function handles the reference of each video
   const handleVideoRef = (index) => (ref) => {
     videoRefs.current[index] = ref;
   };

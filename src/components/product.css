@@ -25,17 +25,6 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 
-.card-content img {
-  width: 100%;
-  height: 100%;
-}
-
-.card-content video {
-  object-fit: fill;
-  width: 100%;
-  height: 100%;
-}
-
 .co {
   margin-top: 15%;
   position: relative;
@@ -43,6 +32,28 @@ body::-webkit-scrollbar {
   height: 91vh;
   scroll-snap-align: end;
   padding: 0 !important;
+}
+
+.co::before {
+  content: '';
+  display: block;
+  box-shadow: 0 -33px 48px rgba(0, 0, 0, 0.5) inset;
+  width: 100%;
+  pointer-events: none;
+  z-index: 99;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: transparent;
+}
+
+.co .player {
+  position: relative;
+  left: 0;
+  object-fit: fill;
+  width: 100%;
+  height: 91%;
 }
 
 .co .sidebar {
