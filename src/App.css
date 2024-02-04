@@ -10,14 +10,28 @@
   -o-transform: translatex(-50%);
 }
 
+.ss {
+  margin-left: 50%;
+  width: 425px;
+  transform: translatex(-50%);
+  -webkit-transform: translatex(-50%);
+  -moz-transform: translatex(-50%);
+  -ms-transform: translatex(-50%);
+  -o-transform: translatex(-50%);
+}
+
 @media (max-width:375px) {
-  .home {
+
+  .home,
+  .ss {
     width: 375px;
   }
 }
 
 @media (max-width:320px) {
-  .home {
+
+  .home,
+  .ss {
     width: 320px;
   }
 }

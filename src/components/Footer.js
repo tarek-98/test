@@ -19,7 +19,7 @@ function Footer() {
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary nav-buttom home"
+      className="bg-body-tertiary nav-buttom ss nav-buttom"
       fixed="bottom"
     >
       <Container>
